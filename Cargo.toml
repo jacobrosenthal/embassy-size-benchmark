@@ -1,0 +1,60 @@
+[package]
+authors = ["Jacob Rosenthal"]
+categories = ["embedded", "hardware-support", "no-std"]
+description = "Size benchmark for Embassy executor"
+keywords = ["arm", "cortex-m", "nrf52840", "hal"]
+license = "MIT OR Apache-2.0"
+name = "embassy-size-benchmark"
+repository = "https://github.com/jacobrosenthal/embassy-size-benchmark"
+version = "0.0.1"
+edition = "2018"
+resolver = "2"
+
+[features]
+default = []
+executor = []
+spawn = []
+join = []
+
+[dependencies]
+embassy = { version = "0.1.0", git = "https://github.com/embassy-rs/embassy" }
+embassy-traits = { version = "0.1.0", git = "https://github.com/embassy-rs/embassy" }
+embassy-nrf = { version = "0.1.0", git = "https://github.com/embassy-rs/embassy", features = [
+    "nrf52840",
+] }
+cortex-m = "0.7.2"
+cortex-m-rt = "=0.6.15"
+futures = { version = "0.3.15", default-features = false, features = [
+    "async-await"
+] }
+panic-abort = "0.3.2"
+
+[patch.crates-io]
+embassy = { git = "https://github.com/embassy-rs/embassy" }
+embassy-nrf = { git = "https://github.com/embassy-rs/embassy" }
+embassy-macros = { git = "https://github.com/embassy-rs/embassy" }
+embassy-traits = { git = "https://github.com/embassy-rs/embassy" }
+
+# for cargo flash
+[package.metadata]
+chip = "nRF52840_xxAA"
+
+[profile.dev]
+panic = 'abort'
+codegen-units = 1
+debug = 2
+debug-assertions = false
+incremental = false
+lto = "fat"
+opt-level = 's'
+overflow-checks = false
+
+[profile.release]
+panic = 'abort'
+codegen-units = 1
+debug = 2
+debug-assertions = false
+incremental = false
+lto = "fat"
+opt-level = 's'
+overflow-checks = false
