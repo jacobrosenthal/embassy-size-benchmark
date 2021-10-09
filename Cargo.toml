@@ -9,6 +9,7 @@ repository = "https://github.com/jacobrosenthal/embassy-size-benchmark"
 version = "0.0.1"
 edition = "2018"
 resolver = "2"
+default-run = "embassy"
 
 [features]
 default = []
@@ -34,6 +35,18 @@ embassy = { git = "https://github.com/embassy-rs/embassy" }
 embassy-nrf = { git = "https://github.com/embassy-rs/embassy" }
 embassy-macros = { git = "https://github.com/embassy-rs/embassy" }
 embassy-traits = { git = "https://github.com/embassy-rs/embassy" }
+
+[[bin]]
+name = "embassy"
+path = "src/main.rs"
+test = false
+bench = false
+
+[[bin]]
+name = "cortex"
+test = false
+bench = false
+path = "src/cortex.rs"
 
 # for cargo flash
 [package.metadata]

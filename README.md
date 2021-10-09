@@ -7,10 +7,11 @@
 
 ## size
 
-- `cargo size --release`
-- `cargo size --release --features=executor`
-- `cargo size --release --features=executor,spawn`
-- `cargo size --release --features=executor,spawn,join`
+- `cargo size --bin cortex --release`
+- `cargo size --bin embassy --release`
+- `cargo size --bin embassy --release --features=executor`
+- `cargo size --bin embassy --release --features=executor,spawn`
+- `cargo size --bin embassy --release --features=executor,spawn,join`
 
 At the time of writing
 
